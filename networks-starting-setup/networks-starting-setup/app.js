@@ -68,9 +68,9 @@ app.get('/people', async (req, res) => {
 });
 
 mongoose.connect(
-  // 몽고 db 컨테이너를 참조하게 한다.
-  // docker container inspect mongodb로 IP주소 가져온다.
-  'mongodb://172.17.0.2:27017/swfavorites',
+  // 컨테이너 간 네트워크 통신 가능하게 한다. --network 사용 버전
+  // 컨테이너 이름 도메인으로 사용 가능
+  'mongodb://mongodb:27017/swfavorites',
   { useNewUrlParser: true },
   (err) => {
     if (err) {
