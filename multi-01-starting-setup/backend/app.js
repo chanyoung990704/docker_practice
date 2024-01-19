@@ -85,7 +85,8 @@ app.delete('/goals/:id', async (req, res) => {
 
 mongoose.connect(
   // 개시한 network와 통신하게 수정.
-  'mongodb://mongodb:27017/course-goals',
+  // mongodb에 설정한 password 인증 추가
+  'mongodb://max:secret@mongodb:27017/course-goals?authSource=admin',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
