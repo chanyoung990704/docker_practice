@@ -27,7 +27,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/goals', async (req, res) => {
-  console.log('TRYING TO FETCH GOALS');
+  console.log('TRYING TO FETCH GOALS!!');
   try {
     const goals = await Goal.find();
     res.status(200).json({
@@ -36,7 +36,7 @@ app.get('/goals', async (req, res) => {
         text: goal.text,
       })),
     });
-    console.log('FETCHED GOALS');
+    console.log('FETCHED GOALS!');
   } catch (err) {
     console.error('ERROR FETCHING GOALS');
     console.error(err.message);
@@ -86,7 +86,8 @@ app.delete('/goals/:id', async (req, res) => {
 mongoose.connect(
   // 개시한 network와 통신하게 수정.
   // mongodb에 설정한 password 인증 추가
-  'mongodb://max:secret@mongodb:27017/course-goals?authSource=admin',
+  // 환경변수 env 사용
+  `mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@mongodb:27017/course-goals?authSource=admin`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -96,7 +97,7 @@ mongoose.connect(
       console.error('FAILED TO CONNECT TO MONGODB');
       console.error(err);
     } else {
-      console.log('CONNECTED TO MONGODB');
+      console.log('CONNECTED TO MONGODB!!');
       app.listen(80);
     }
   }

@@ -61,3 +61,14 @@
    이 명령어는 위의 명령어와 거의 비슷하지만, 차량에 추가로 키(`MONGO_INITDB_ROOT_USERNAME`와 `MONGO_INITDB_ROOT_PASSWORD` 환경 변수)를 제공하는 것과 같습니다. 이 키는 차량의 문을 열거나, 차량을 운전하는데 필요한 정보를 제공합니다.
 
 따라서, 이 명령어들을 통해 차량을 주차하고, 트렁크에 물건을 넣으며, 차량의 키를 제공하는 것을 관리할 수 있습니다. 이 모든 것이 가능한 이유는 Docker라는 강력한 도구 덕분입니다.
+
+/////////////////
+
+docker run --name goals-backend -v /app/node_modules -v C:\Users\ChanYoungPark\Desktop\docker_practice\multi-01-starting-setup\backend:/app -v logs:/app/logs --rm --network goals-net -p 80:80 goals-node
+
+코드 변경 시 노드 재시작을 위해 package.json에 nodemon 추가하고 start script 추가 그리고 Dockerfile 에 npm start로 커맨드 변경.
+
+docker run --name goals-backend -v /app/node_modules -v C:\Users\ChanYoungPark\Desktop\docker_practice\multi-01-starting-setup\backend:/app -v logs:/app/logs --rm --network goals-net -p 80:80 -e MONGODB_USERNAME=max goals-node
+
+DockerFile에 지정된 환경변수 PASSWORD + 커맨드 지정 환경변수 USERNAME 사용.
+////////////////////
