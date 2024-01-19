@@ -84,8 +84,8 @@ app.delete('/goals/:id', async (req, res) => {
 });
 
 mongoose.connect(
-  // 내부 컨테이너와 통신하게 수정.
-  'mongodb://host.docker.internal:27017/course-goals',
+  // 개시한 network와 통신하게 수정.
+  'mongodb://mongodb:27017/course-goals',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,

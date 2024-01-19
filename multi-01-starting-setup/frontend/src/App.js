@@ -13,7 +13,7 @@ function App() {
     async function fetchData() {
       setIsLoading(true);
 
-      try {
+      try { // localhost (코드가 브라우저에서(JAVASCRIPT) 실행되는 것을 고려한다!!)
         const response = await fetch('http://localhost/goals');
 
         const resData = await response.json();
