@@ -22,3 +22,79 @@ services:
   frontend:
 
 =======> 3개의 컨테이너를 사용한다고 명시.
+
+version: '3.8'
+
+services:
+  mongodb:
+    image: 'mongo' // 컨테이너에서 사용할 이미지 명시
+    
+  backend:
+  frontend:
+
+
+==> Compose에서는 detach 모드가 디폴트값
+
+version: '3.8'
+
+services:
+  mongodb:
+    image: 'mongo'
+    volumes: // 볼륨 추가
+      -hostPath:containerPath:ro
+      -volumeName:containerPath:ro
+      
+  backend:
+  frontend:
+
+===================================
+
+version: '3.8'
+
+services:
+  mongodb:
+    image: 'mongo'
+    volumes:
+      - data:/data/db
+    environment: // 환경 변수 추가
+      - MONGO_INITDB_ROOT_USERNAME=max
+      - MONGO_INITDB_ROOT_PASSWORD=secret
+  backend:
+  frontend:
+
+===================================
+
+version: '3.8'
+
+services:
+  mongodb:
+    image: 'mongo'
+    volumes:
+      - data:/data/db
+    env_file: // 환경 변수 파일 env 추가
+      - ./env/mongo.env
+  backend:
+  frontend:
+
+
+========> 네트워크 구성은 자동으로 구성됨.
+
+version: '3.8'
+
+services:
+  mongodb:
+    image: 'mongo'
+    volumes:
+      - data:/data/db
+      # environment:
+      # - MONGO_INITDB_ROOT_USERNAME=max
+      # - MONGO_INITDB_ROOT_PASSWORD=secret
+    env_file:
+      - ./env/mongo.env
+  # backend:
+  # frontend:
+
+volumes: // 명명된 볼륨 추가
+  data:
+
+=====================
