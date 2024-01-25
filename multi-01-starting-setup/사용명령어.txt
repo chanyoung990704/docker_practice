@@ -71,4 +71,10 @@ docker run --name goals-backend -v /app/node_modules -v C:\Users\ChanYoungPark\D
 docker run --name goals-backend -v /app/node_modules -v C:\Users\ChanYoungPark\Desktop\docker_practice\multi-01-starting-setup\backend:/app -v logs:/app/logs --rm --network goals-net -p 80:80 -e MONGODB_USERNAME=max goals-node
 
 DockerFile에 지정된 환경변수 PASSWORD + 커맨드 지정 환경변수 USERNAME 사용.
+
 ////////////////////
+
+docker run -v C:\Users\ChanYoungPark\Desktop\docker_practice\multi-01-starting-setup\frontend\src:/app/src --name goals-frontend --rm -p 3000:3000 -it goals-react
+react의 src폴더를 바인드 마운트
+
+
