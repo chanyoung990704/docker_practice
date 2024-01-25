@@ -98,3 +98,10 @@ volumes: // 명명된 볼륨 추가
   data:
 
 =====================
+
+docker-compose up // docker compose 실행
+docker-compose up -d
+
+docker-compose down // 컨테이너 삭제 및 네트워크 구성 삭제 볼륨은 삭제되지 않음
+
+docker-compose down -v // 볼륨까지 삭제
