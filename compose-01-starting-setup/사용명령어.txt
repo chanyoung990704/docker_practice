@@ -1,0 +1,24 @@
+Compose
+
+다중 컨테이너 관리에는 유용하지 않음.
+
+일반적으로는 강력한 툴.
+
+Dockerfile 대체는 아님.
+
+
+                Services(Container)
+
+    Published Port                  Environment Variables
+    Volumes                         Networks
+
+
+
+version: '3.8'
+
+services:
+  mongodb:
+  backend:
+  frontend:
+
+=======> 3개의 컨테이너를 사용한다고 명시.
