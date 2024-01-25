@@ -105,3 +105,108 @@ docker-compose up -d
 docker-compose down // 컨테이너 삭제 및 네트워크 구성 삭제 볼륨은 삭제되지 않음
 
 docker-compose down -v // 볼륨까지 삭제
+
+===========================
+
+version: '3.8'
+
+services:
+  mongodb:
+    image: 'mongo'
+    volumes:
+      - data:/data/db
+      # environment:
+      # - MONGO_INITDB_ROOT_USERNAME=max
+      # - MONGO_INITDB_ROOT_PASSWORD=secret
+    env_file:
+      - ./env/mongo.env
+  backend:
+    build: ./backend // 대상 위치의 Dockerfile 빌드
+    
+  # frontend:
+
+volumes:
+  data:
+
+===============================
+
+version: '3.8'
+
+services:
+  mongodb:
+    image: 'mongo'
+    volumes:
+      - data:/data/db
+      # environment:
+      # - MONGO_INITDB_ROOT_USERNAME=max
+      # - MONGO_INITDB_ROOT_PASSWORD=secret
+    env_file:
+      - ./env/mongo.env
+  backend:
+    build: ./backend
+    ports: // 포트 개시
+      - '3000:80'
+
+  # frontend:
+
+volumes:
+  data:
+
+=========================
+
+version: '3.8'
+
+services:
+  mongodb:
+    image: 'mongo'
+    volumes:
+      - data:/data/db
+      # environment:
+      # - MONGO_INITDB_ROOT_USERNAME=max
+      # - MONGO_INITDB_ROOT_PASSWORD=secret
+    env_file:
+      - ./env/mongo.env
+  backend:
+    build: ./backend
+    ports:
+      - '80:80'
+    volumes:
+      - logs:/app/logs
+      - ./backend:/app // 바인트 마운트 
+  # frontend:
+
+volumes: // 명명된 마운트만 추가
+  data:
+  logs:
+
+================================
+
+version: '3.8'
+
+services:
+  mongodb:
+    image: 'mongo'
+    volumes:
+      - data:/data/db
+      # environment:
+      # - MONGO_INITDB_ROOT_USERNAME=max
+      # - MONGO_INITDB_ROOT_PASSWORD=secret
+    env_file:
+      - ./env/mongo.env
+  backend:
+    build: ./backend
+    ports:
+      - '80:80'
+    volumes:
+      - logs:/app/logs
+      - ./backend:/app
+      - /app/node_modules
+    env_file:
+      - ./env/backend.env
+    depends_on: // backend가 실행되기 위해 먼저 실행되어야 하는 서비스 (의존관계) 설정
+      - mongodb
+  # frontend:
+
+volumes:
+  data:
+  logs:
