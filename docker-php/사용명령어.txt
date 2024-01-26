@@ -74,3 +74,11 @@ services:
   # composer:
   # artisan:
   # npm:
+
+#######################################################
+
+docker-compose run --rm composer
+  단일 컨테이너 실행
+
+docker-compose run --rm composer create-project --prefer-dist laravel/laravel .
+  Laravel 앱 만들기 위해 추가
