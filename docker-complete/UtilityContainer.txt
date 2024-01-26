@@ -25,3 +25,12 @@ ENTRYPOINT [ "executable" ]
     docker run -it -v C:\Users\ChanYoungPark\Desktop\docker_practice\docker-complete:/app mynpm install express --save
         express 종속성 설치
         컨테이너의 app폴더에서 인스톨된 것들이 바인딩 마운트 폴더에 미러링
+
+
+docker-compose up
+    compose활용
+    =>  docker-compose run  로 사용해야 함
+        services에서 사용되어진 추가 명령 입력 npm init
+            => docker-compose run npm init
+        명령이 완료되면 종료 (자동 제거되는 것은 아님)
+            docker-compose run --rm npm init
