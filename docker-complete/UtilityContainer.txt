@@ -15,4 +15,13 @@ docker build -t node-util .
 
 docker run -it -v C:\Users\ChanYoungPark\Desktop\docker_practice\docker-complete:/app node-util npm init
     호스트 머신의 폴더를 컨테이너와 공유
-    
+
+ENTRYPOINT [ "executable" ]
+    이미지 이름 뒤에 입력되는 모든 것들 ENTRYPOINT에 추가
+
+     docker build -t mynpm .
+     docker run -it -v C:\Users\ChanYoungPark\Desktop\docker_practice\docker-complete:/app mynpm init
+        ENTRYPOINT에 이미 npm이 포함되어있기에 init만
+    docker run -it -v C:\Users\ChanYoungPark\Desktop\docker_practice\docker-complete:/app mynpm install express --save
+        express 종속성 설치
+        컨테이너의 app폴더에서 인스톨된 것들이 바인딩 마운트 폴더에 미러링
