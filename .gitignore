@@ -584,3 +584,14 @@ docker-php/src/laravel/storage/framework/sessions/.gitignore
 docker-php/src/laravel/storage/framework/testing/.gitignore
 docker-php/src/laravel/storage/framework/views/.gitignore
 docker-php/src/laravel/storage/logs/.gitignore
+docker-php/src/laravel/bootstrap/cache/.gitignore
+docker-php/src/laravel/bootstrap/cache/.gitignore
+docker-php/src/laravel/bootstrap/cache/.gitignore
+docker-php/src/laravel/storage/app/.gitignore
+docker-php/src/laravel/storage/app/public/.gitignore
+docker-php/src/laravel/storage/framework/cache/.gitignore
+docker-php/src/laravel/storage/framework/cache/data/.gitignore
+docker-php/src/laravel/storage/framework/sessions/.gitignore
+docker-php/src/laravel/storage/framework/testing/.gitignore
+docker-php/src/laravel/storage/framework/views/.gitignore
+docker-php/src/laravel/storage/logs/.gitignore
