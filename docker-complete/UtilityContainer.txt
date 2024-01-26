@@ -1,0 +1,18 @@
+특정 환경만 포함하는 컨테이너
+    특정 명령과 함께 실행
+    이름 뒤 부가 명령 추가
+    
+docker exec -it confident_hodgkin npm init
+    컨테이너 내부에서 npm init 시작
+
+docker run -it node npm init
+
+
+FROM node:14-alpine
+    유틸리티 컨테이너를 위한 간소화 node
+
+docker build -t node-util .
+
+docker run -it -v C:\Users\ChanYoungPark\Desktop\docker_practice\docker-complete:/app node-util npm init
+    호스트 머신의 폴더를 컨테이너와 공유
+    
