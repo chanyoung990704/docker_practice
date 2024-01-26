@@ -45,4 +45,32 @@ nginx.conf
 }
 
 #########################################################
+php.dockerfile
+    FROM php:7.4-fpm-alpine
 
+    WORKDIR /var/www/html
+
+    RUN docker-php-ext-install pdo pdo_mysql
+
+    CMD나 ENTRYPOINT가 명시되지 않은 경우 BASE이미지의 것들을 사용한다.
+
+#####################################################
+
+
+services:
+  server:
+    image: 'nginx: stable-alpine'
+    ports:
+      - '8000:80'
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+  php:
+    build:
+      context: ./dockerfiles // 도커 파일 폴더
+      dockerfile: php.dockerfile // 도커 파일 명
+    volumes:
+      - ./src:/var/www/html:delegated  // delegated : 성능 향상
+  # mysql:
+  # composer:
+  # artisan:
+  # npm:
