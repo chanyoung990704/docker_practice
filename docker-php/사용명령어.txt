@@ -82,3 +82,10 @@ docker-compose run --rm composer
 
 docker-compose run --rm composer create-project --prefer-dist laravel/laravel .
   Laravel 앱 만들기 위해 추가
+
+##################################################
+
+더 많은 유틸리티 컨테이너 추가하기
+  docker-compose run --rm artisan migrate
+    migrage : artisan에 사용되는 명령어
+  
