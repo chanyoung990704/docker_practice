@@ -2,4 +2,15 @@ apiVersion: apps/v1
 kind: Deployment
 metadata: 
   name: second-app-deployment
-  
+spec:
+  replicas: 1
+  template: 
+    metadata: 
+      labels:
+        app: second-app
+    spec:
+      containers:
+        - name: second-node
+          image: chanyoungpark9974/kub-first-app:2
+        # - name:
+        #   image:
